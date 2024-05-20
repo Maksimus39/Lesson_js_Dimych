@@ -1,4 +1,11 @@
+//  Create
+// Read
+// Update
+// Delete
+
+
 // data
+
 const info = {
     title: 'it-incubator',
     graduatesCount: 2000,
@@ -6,6 +13,7 @@ const info = {
 }
 
 // render for data
+
 const pageTitleElement = document.createElement('h1');
 pageTitleElement.append(info.title)
 document.body.append(pageTitleElement);
