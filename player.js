@@ -26,20 +26,89 @@ const playList = {
     ]
 }
 
-// title
-const playListTitleElement = document.createElement("h1")
-playListTitleElement.append(playList.playListInfo.title)
-document.body.append(playListTitleElement);
+// // title
+// const playListTitleElement = document.createElement("h1")
+// playListTitleElement.append(playList.playListInfo.title)
+// document.body.append(playListTitleElement);
+//
+// // image
+// const playlistImageElement = document.createElement("img");
+// playlistImageElement.src = (playList.playListInfo.coverImgUrl);
+// playlistImageElement.style.width = "200px"
+// playlistImageElement.style.height = "300"
+// document.body.append(playlistImageElement);
+//
 
-// image
-const playlistImageElement = document.createElement("img");
-playlistImageElement.src = (playList.playListInfo.coverImgUrl);
-playlistImageElement.style.width = "150px"
-playlistImageElement.style.height = "150px"
-document.body.append(playlistImageElement);
+
+// trackList
+
+// const trackListElement = document.createElement("ul");
+//
+// for (let i = 0; i < playList.tracks.length; i++) {
+//     const trackElement = document.createElement("li")
+//     const trackCoverElement = document.createElement("img")
+//     trackCoverElement.src = playList.tracks[i].trackCoverImgUrl
+//     trackCoverElement.style.width = "90px"
+//     trackCoverElement.style.height = "90px"
+//     trackElement.append(trackCoverElement)
+//     trackElement.append(playList.tracks[i].artistName + ": " + playList.tracks[i].trackTitle)
+//     trackListElement.append(trackElement)
+//
+// }
+// document.body.append(trackListElement);
 
 
+// функция для отрисовки плейлиста
 
+function renderPlaylist(anyPlaylist) {
+    // header
+    renderHeader(anyPlaylist.playListInfo)
+
+    // trackList
+    const trackListElement = document.createElement("ul");
+
+    for (let i = 0; i < anyPlaylist.tracks.length; i++) {
+        const trackElement = createTrack(anyPlaylist.tracks[i]);
+        trackListElement.append(trackElement)
+    }
+    document.body.append(trackListElement);
+}
+
+// header
+function renderHeader(anyPlaylistInfo) {
+    // title
+    const playListTitleElement = document.createElement("h1")
+    playListTitleElement.append(anyPlaylistInfo.title)
+    document.body.append(playListTitleElement);
+
+    // image
+    const playlistImageElement = document.createElement("img");
+    playlistImageElement.src = (anyPlaylistInfo.coverImgUrl);
+    playlistImageElement.style.width = "200px"
+    playlistImageElement.style.height = "300"
+    document.body.append(playlistImageElement);
+}
+
+// renderTrack
+function createTrack(anyTrack) {
+    const trackElement = document.createElement("li")
+    const trackCoverElement = document.createElement("img")
+    trackCoverElement.src = anyTrack.trackCoverImgUrl
+    trackCoverElement.style.width = "90px"
+    trackCoverElement.style.height = "90px"
+
+    const audio = document.createElement("audio")
+    audio.src = anyTrack.trackFileUrl
+    audio.controls = true
+
+    trackElement.append(trackCoverElement)
+    trackElement.append(anyTrack.artistName + ": " + anyTrack.trackTitle)
+    trackElement.append(audio)
+
+    return trackElement
+}
+
+renderPlaylist(playList)
 
 
 
