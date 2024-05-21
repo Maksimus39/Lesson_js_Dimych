@@ -26,49 +26,18 @@ const playList = {
     ]
 }
 
-// // title
-// const playListTitleElement = document.createElement("h1")
-// playListTitleElement.append(playList.playListInfo.title)
-// document.body.append(playListTitleElement);
-//
-// // image
-// const playlistImageElement = document.createElement("img");
-// playlistImageElement.src = (playList.playListInfo.coverImgUrl);
-// playlistImageElement.style.width = "200px"
-// playlistImageElement.style.height = "300"
-// document.body.append(playlistImageElement);
-//
-
-
-// trackList
-
-// const trackListElement = document.createElement("ul");
-//
-// for (let i = 0; i < playList.tracks.length; i++) {
-//     const trackElement = document.createElement("li")
-//     const trackCoverElement = document.createElement("img")
-//     trackCoverElement.src = playList.tracks[i].trackCoverImgUrl
-//     trackCoverElement.style.width = "90px"
-//     trackCoverElement.style.height = "90px"
-//     trackElement.append(trackCoverElement)
-//     trackElement.append(playList.tracks[i].artistName + ": " + playList.tracks[i].trackTitle)
-//     trackListElement.append(trackElement)
-//
-// }
-// document.body.append(trackListElement);
-
 
 // функция для отрисовки плейлиста
 
-function renderPlaylist(anyPlaylist) {
+function renderPlaylist(anyPlaylistArray) {
     // header
-    renderHeader(anyPlaylist.playListInfo)
+    renderHeader(anyPlaylistArray.playListInfo)
 
     // trackList
     const trackListElement = document.createElement("ul");
 
-    for (let i = 0; i < anyPlaylist.tracks.length; i++) {
-        const trackElement = createTrack(anyPlaylist.tracks[i]);
+    for (let i = 0; i < anyPlaylistArray.tracks.length; i++) {
+        const trackElement = createTrack(anyPlaylistArray.tracks[i]);
         trackListElement.append(trackElement)
     }
     document.body.append(trackListElement);
@@ -108,7 +77,14 @@ function createTrack(anyTrack) {
     return trackElement
 }
 
+
 renderPlaylist(playList)
+
+
+
+
+
+
 
 
 
